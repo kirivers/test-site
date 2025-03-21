@@ -75,7 +75,44 @@ const App = () => {
           <img src="/profile2.jpeg" alt="Kaylen's Profile" className="profile-pic" />
         </div>
       </div>
+      <h1>Projects</h1>
+      <div className="projects-container">
+        {projects.map((project, index) => (
+          <a 
+            key={index} 
+            href={project.githubLink} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="project-link" 
+          >
+            <div className="project-box">
+              <div className="project-name">{project.name}</div>
+              <div className="project-description">{project.description}</div>
+
+              <div className="skills-container">
+                {project.skills.map((skill, i) => (
+                  <span key={i} className="skill-label" style={{ backgroundColor: skillColors[skill] || '#3498db' }}>
+                    {skill}
+                  </span>
+                
+                ))}
+              </div>
+            {/* GitHub icon (only if project has a GitHub link) */}
+            {project.githubLink && (
+              <div className="github-icon">
+                <FontAwesomeIcon icon={faGithub} />
+              </div>
+            )}
+            
+            </div>
+          </a>
+        ))}
+      </div>
+
+
+
     </div>
+    
   );
 };
 
